@@ -3,70 +3,88 @@
 
 Frame #    Frame Bytes    Total Bytes    Scene
 -------    -----------    -----------    -----
-      1         685699         685699    Scene 1 (AS 3.0 Classes Export Frame)
+      1         693942         693942    Scene 1 (AS 3.0 Classes Export Frame)
 
 Scene      Shape Bytes    Text Bytes    ActionScript Bytes
 -------    -----------    ----------    ------------------
-Scene 1              0             0                  7947
+Scene 1              0             0                 10955
 
 Font Name          Bytes         Characters
 ---------------    ----------    ----------
-Dungeon-Regular          3854    .0123456789
+Dungeon-Regular         13760     !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ˆ˜–—‘’‚“”„†‡•…‰‹›€™
 
 ActionScript Bytes    Location
 ------------------    --------
-               307    Scene 1:Frame 1:resources.DungeonFont
-               372    Scene 1:Frame 1:resources.GroundBitmap
-               376    Scene 1:Frame 1:resources.OverlayBitmap
-               356    Scene 1:Frame 1:resources.Planet
-               364    Scene 1:Frame 1:resources.RockBitmap
-               364    Scene 1:Frame 1:resources.SkyBitmap
-               367    Scene 1:Frame 1:resources.anon.Hands0
-               367    Scene 1:Frame 1:resources.anon.Hands1
-               367    Scene 1:Frame 1:resources.anon.Hands2
-               367    Scene 1:Frame 1:resources.anon.Hands3
-               364    Scene 1:Frame 1:resources.anon.Walk0
-               364    Scene 1:Frame 1:resources.anon.Walk1
-               364    Scene 1:Frame 1:resources.anon.Walk2
-               364    Scene 1:Frame 1:resources.anon.Walk3
-               379    Scene 1:Frame 1:resources.anon.WalkHands0
-               379    Scene 1:Frame 1:resources.anon.WalkHands1
-               379    Scene 1:Frame 1:resources.anon.WalkHands2
-               379    Scene 1:Frame 1:resources.anon.WalkHands3
-               342    Scene 1:Frame 1:resources.Bloodrain
-               342    Scene 1:Frame 1:resources.MusicLoop
-               345    Scene 1:Frame 1:resources.RockGround
-               339    Scene 1:Frame 1:resources.RockRock
+               291    Scene 1:Frame 1:resources.DungeonFont
+               356    Scene 1:Frame 1:resources.GroundBitmap
+               359    Scene 1:Frame 1:resources.OverlayBitmap
+               339    Scene 1:Frame 1:resources.Planet
+               348    Scene 1:Frame 1:resources.RockBitmap
+               348    Scene 1:Frame 1:resources.SkyBitmap
+               351    Scene 1:Frame 1:resources.anon.Hands0
+               351    Scene 1:Frame 1:resources.anon.Hands1
+               351    Scene 1:Frame 1:resources.anon.Hands2
+               351    Scene 1:Frame 1:resources.anon.Hands3
+               348    Scene 1:Frame 1:resources.anon.Walk0
+               348    Scene 1:Frame 1:resources.anon.Walk1
+               348    Scene 1:Frame 1:resources.anon.Walk2
+               348    Scene 1:Frame 1:resources.anon.Walk3
+               362    Scene 1:Frame 1:resources.anon.WalkHands0
+               362    Scene 1:Frame 1:resources.anon.WalkHands1
+               362    Scene 1:Frame 1:resources.anon.WalkHands2
+               362    Scene 1:Frame 1:resources.anon.WalkHands3
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame0
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame1
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame2
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame3
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame4
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame5
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame6
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame7
+               374    Scene 1:Frame 1:resources.pulsar.PulsarFrame8
+               326    Scene 1:Frame 1:resources.Bloodrain
+               326    Scene 1:Frame 1:resources.MusicLoop
+               329    Scene 1:Frame 1:resources.RockGround
+               323    Scene 1:Frame 1:resources.RockRock
 
 Bitmap                   Compressed    Original      Compression
 ---------------------    ----------    ----------    -----------
-walkHandsupFrame3.png          1961         16384    Lossless
-walkHandsupFrame2.png          1832         16384    Lossless
-walkHandsupFrame1.png          1782         16384    Lossless
-walkHandsupFrame0.png          1667         16384    Lossless
-walkFrame3.png                 2196         16384    Lossless
-walkFrame2.png                 2027         16384    Lossless
-walkFrame1.png                 2001         16384    Lossless
-walkFrame0.png                 2060         16384    Lossless
-sky.gif                       20506        691200    Lossless
-rock.png                       1304         16384    Lossless
-planet.gif                     2220         60520    Lossless
-overlay.png                    1943       1228800    Lossless
-handsFrame3.png                1669         16384    Lossless
-handsFrame2.png                1893         16384    Lossless
-handsFrame1.png                2053         16384    Lossless
-handsFrame0.png                2027         16384    Lossless
-ground.png                     2395         81280    Lossless
+walkHandsupFrame3.png          1945         16384    Lossless
+walkHandsupFrame2.png          1818         16384    Lossless
+walkHandsupFrame1.png          1768         16384    Lossless
+walkHandsupFrame0.png          1653         16384    Lossless
+walkFrame3.png                 2179         16384    Lossless
+walkFrame2.png                 2011         16384    Lossless
+walkFrame1.png                 1985         16384    Lossless
+walkFrame0.png                 2043         16384    Lossless
+sky.gif                       20342        691200    Lossless
+rock.png                       1294         16384    Lossless
+PulsarFrame8.png                 37          4096    Lossless
+PulsarFrame7.png                 46          4096    Lossless
+PulsarFrame6.png                 47          4096    Lossless
+PulsarFrame5.png                 46          4096    Lossless
+PulsarFrame4.png                 47          4096    Lossless
+PulsarFrame3.png                 52          4096    Lossless
+PulsarFrame2.png                 65          4096    Lossless
+PulsarFrame1.png                 66          4096    Lossless
+PulsarFrame0.png                 46          4096    Lossless
+planet.gif                     2203         60520    Lossless
+overlay.png                    1927       1228800    Lossless
+handsFrame3.png                1655         16384    Lossless
+handsFrame2.png                1878         16384    Lossless
+handsFrame1.png                2036         16384    Lossless
+handsFrame0.png                2011         16384    Lossless
+ground.png                     2375         81280    Lossless
 
 Event Sounds: 22KHz Mono 16 kbps MP3
 
 
 Sound name       Bytes         Format
 -------------    ----------    ------
-rockhit.wav            2278    22KHz Mono 56 kbps MP3
-rockbreak.wav          3662    22KHz Mono 56 kbps MP3
-loop.wav             601218    22KHz Mono 56 kbps MP3
-dying.wav             14607    22KHz Mono 56 kbps MP3
+rockhit.wav            2260    22KHz Mono 56 kbps MP3
+rockbreak.wav          3633    22KHz Mono 56 kbps MP3
+loop.wav             596397    22KHz Mono 56 kbps MP3
+dying.wav             14490    22KHz Mono 56 kbps MP3
 
 
 

@@ -4,6 +4,7 @@ package flash.anon.game.view
 	import flash.anon.game.objects.prototypes.PlanetObject;
 	import flash.anon.game.view.background.Ground;
 	import flash.anon.game.view.background.PlanetSprite;
+	import flash.anon.game.view.background.Pulsar;
 	import flash.anon.game.view.background.Sky;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -19,6 +20,7 @@ package flash.anon.game.view
 		private var _planetLength:int;
 		
 		private var _sky:Sky;
+		private var _pulsars:Vector.<Pulsar>;
 		private var _planet:PlanetSprite;
 		private var _ground:Ground;
 		private var _foreground:Sprite;
@@ -40,6 +42,24 @@ package flash.anon.game.view
 			
 			_sky = new Sky();
 			addChild( _sky );
+			
+			const numOfPulsars:int = 10 + 10*Math.random();
+			_pulsars = new Vector.<Pulsar>( planetLength*2, true );
+			for( var i:int = 0; i < numOfPulsars; ++i )
+			{
+				var pulsarPeriod:Number = 500 + Math.random()*5000;
+				var pulsar:Pulsar = new Pulsar( pulsarPeriod );
+				pulsar.x = Math.random()*_sky.width/2;
+				pulsar.y = Math.random()*_sky.height;
+				_pulsars[i] = pulsar;
+				_sky.addChild( pulsar );
+				var pulsarDouble:Pulsar = new Pulsar( pulsarPeriod );
+				pulsarDouble.x = pulsar.x + _sky.width/2;
+				pulsarDouble.y = pulsar.y;
+				_pulsars[i+numOfPulsars] = pulsarDouble;
+				_sky.addChild( pulsarDouble );
+			}
+			
 			_planet = new PlanetSprite( planetLength/4 );
 			addChild( _planet );
 			_ground = new Ground();
@@ -70,8 +90,6 @@ package flash.anon.game.view
 				setCamera( _cameraPlanetXCentric, _cameraPlanetY, true );
 				
 				_sky.y = ( _viewHeight - _sky.height )/2;
-				//_sky.scaleY *= _viewHeight / _sky.height;
-				//_sky.scaleX = _sky.scaleY;
 				_planet.y = ( _viewHeight - _planet.height )/2;
 				_ground.y = _viewHeight - _ground.height;
 				
@@ -86,6 +104,15 @@ package flash.anon.game.view
 		public function get viewHeight():Number
 		{
 			return _viewHeight;
+		}
+		
+		public function animate( timeElapsed:Number ):void
+		{
+			for each( var pulsar:Pulsar in _pulsars )
+			{
+				if( pulsar != null )
+					pulsar.play( timeElapsed );
+			}
 		}
 		
 		public function setCamera( cameraXCentric:Number, cameraY:Number, force:Boolean=false ):void

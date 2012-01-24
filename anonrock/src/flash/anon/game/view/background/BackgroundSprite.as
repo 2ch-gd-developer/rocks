@@ -9,6 +9,7 @@ package flash.anon.game.view.background
 		private var _image1:Bitmap;
 		private var _gap:int;
 		private var _deep:Number;
+		private var _widthWithGap:int;
 		
 		public function BackgroundSprite()
 		{
@@ -22,17 +23,19 @@ package flash.anon.game.view.background
 			_image1 = new Bitmap( new bitmapClass(), "auto", true );
 			addChild( _image0 );
 			_gap = gap;
-			_image1.x = widthWithGap;
+			_widthWithGap = Math.max( _image0.width, _gap );
+			_image1.x = _widthWithGap;
 			addChild( _image1 );
 		}
 		
 		public function setCamera( xValue:Number ):void
 		{
 			var perspectiveX:Number = xValue/( 1+_deep );
-			perspectiveX %= widthWithGap;
+			var loops:int = perspectiveX/_widthWithGap;
+			perspectiveX -= loops*_widthWithGap;
 			x = -perspectiveX;
 			if( x > 0 )
-				x -= widthWithGap;
+				x -= _widthWithGap;
 		}
 		
 		private function get widthWithGap():int

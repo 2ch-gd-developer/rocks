@@ -94,6 +94,8 @@ package flash.anon.game
 			}
 			_prevTime = curTime;
 			
+			_view.animate( timeElapsed );
+			
 			if( curTime >= _timeForNextRock )
 			{
 				dropNewRock();
@@ -173,13 +175,17 @@ package flash.anon.game
 			if( anonDeltaY < Math.abs(anonDeltaX)*7 )
 			{
 				_anon.walk( timeElapsed );
-				_terrainUnderAnon = _terrain.getHeightForPoint( _anon.planetXLooped );
-				if( _anon.planetY < _terrainUnderAnon.height + _anon.height/8 )
-					_anon.planetY = _terrainUnderAnon.height;
-				else
-					_anon.startFall();
+				checkAnonGround();
 				carryRock();
 			}
+		}
+		private function checkAnonGround():void
+		{
+			_terrainUnderAnon = _terrain.getHeightForPoint( _anon.planetXLooped );
+			if( _anon.planetY < _terrainUnderAnon.height + _anon.height/8 )
+				_anon.planetY = _terrainUnderAnon.height;
+			else
+				_anon.startFall();
 		}
 		
 		private function rockFalling( rock:Rock, timeElapsed:int ):void
@@ -359,6 +365,7 @@ package flash.anon.game
 				_terrain.findRockBase( rock );
 				_terrain.addFixedRock( rock );
 				SoundEffects.playRockSound( 1, rock, getDistanceFromAnonToRock(rock), false );
+				checkAnonGround();
 			}
 		}
 		
