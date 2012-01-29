@@ -27,6 +27,15 @@ package flash.anon.game.sound
 				startSound();
 		}
 		
+		public function stop():void
+		{
+			if( _soundChannel != null )
+			{
+				_soundChannel.removeEventListener( Event.SOUND_COMPLETE, startSound );
+				_soundChannel.stop();
+			}
+		}
+		
 		private function startSound( event:Event=null ):void
 		{
 			if( event )

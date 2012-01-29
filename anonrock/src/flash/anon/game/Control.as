@@ -18,11 +18,13 @@ package flash.anon.game
 		public static const WALK_STOP:String = "walkStop";
 		public static const PICKUP_ROCK:String = "pickupRock";
 		public static const PUTDOWN_ROCK:String = "putdownRock";
+		public static const ESCAPE:String = "escape";
 		
 		public var walkLeftKey:uint = Keyboard.LEFT;
 		public var walkRightKey:uint = Keyboard.RIGHT;
 		public var pickupKey:uint = Keyboard.UP;
 		public var putdownKey:uint = Keyboard.DOWN;
+		public var escapeKey:uint = Keyboard.BACKSPACE;
 
 		private var _stage:Stage;
 		
@@ -88,6 +90,9 @@ package flash.anon.game
 				break;
 			case putdownKey:
 				dispatchEvent( new Event(PUTDOWN_ROCK) );
+				break;
+			case escapeKey:
+				dispatchEvent( new Event(ESCAPE) );
 				break;
 			}
 		}

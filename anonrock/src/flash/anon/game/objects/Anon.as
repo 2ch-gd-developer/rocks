@@ -26,9 +26,10 @@ package flash.anon.game.objects
 		private var _pickingUp:Boolean = false;
 		private var _putingDown:Boolean = false;
 
-		public function Anon( planetLength:int, planetGravity:Number )
+		public function Anon( stepTime:int, planetLength:int, planetGravity:Number )
 		{
 			super( planetLength, planetGravity );
+			_stepPeriod = stepTime;
 		}
 
 		public function init():void
@@ -104,7 +105,7 @@ package flash.anon.game.objects
 		public function set burden( value:Number ):void
 		{
 			_burden = value;
-			_curWalkAnimation.period = _stepPeriod*( 1+_burden );
+			_curWalkAnimation.period = _stepPeriod*( 1+2*_burden );
 		}
 		
 		private function switchToWalkAnimation():void

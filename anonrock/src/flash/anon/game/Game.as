@@ -12,13 +12,14 @@ package flash.anon.game
 	import flash.anon.game.view.GameView;
 	import flash.display.Stage;
 	import flash.events.Event;
+	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.geom.Point;
 	import flash.utils.Timer;
 	import flash.utils.getTimer;
 
-	public class Game
+	public class Game extends EventDispatcher
 	{
 		private var _planetParams:PlanetParams;
 		
@@ -42,6 +43,7 @@ package flash.anon.game
 
 		public function Game( stage:Stage )
 		{
+			super();
 			_stage = stage;
 			
 			_terrain = new Terrain();
@@ -55,6 +57,7 @@ package flash.anon.game
 			_control.addEventListener( Control.WALK_STOP, onWalkStop );
 			_control.addEventListener( Control.PICKUP_ROCK, onPickup );
 			_control.addEventListener( Control.PUTDOWN_ROCK, onPutdown );
+			_control.addEventListener( Control.ESCAPE, escape );
 		}
 		
 		public function start( planetParams:PlanetParams ):void
@@ -63,7 +66,7 @@ package flash.anon.game
 			
 			_terrain.init( _planetParams.length, 100 );
 			
-			_anon = new Anon( _terrain.length, _planetParams.gravity );
+			_anon = new Anon( _planetParams.anonStepTime, _terrain.length, _planetParams.gravity );
 			_anon.init();
 			
 			_fallingRocks = new Vector.<Rock>();
@@ -81,6 +84,19 @@ package flash.anon.game
 			_backgroundSound.start();
 			
 			_control.start( _stage, true );
+		}
+		
+		public function stop():void
+		{
+			_backgroundSound.stop();
+			_control.stop();
+			_stage.removeEventListener( Event.ENTER_FRAME, onEnterFrame );
+		}
+		
+		private function escape( event:Event ):void
+		{
+			stop();
+			dispatchEvent( new Event( Event.COMPLETE ) );
 		}
 		
 		private var _prevTime:int = int.MAX_VALUE;

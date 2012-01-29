@@ -1,6 +1,7 @@
 package flash.anon
 {
 	import flash.anon.game.Game;
+	import flash.anon.menu.MenuView;
 	import flash.display.Bitmap;
 	import flash.display.BlendMode;
 	import flash.display.DisplayObject;
@@ -8,7 +9,7 @@ package flash.anon
 	import flash.display.Shape;
 	import flash.display.Stage;
 	import flash.events.Event;
-	import flash.geom.Rectangle;
+	import flash.ui.Mouse;
 	
 	import resources.OverlayBitmap;
 
@@ -19,6 +20,7 @@ package flash.anon
 		
 		private var _stage:Stage;
 		private var _root:DisplayObjectContainer;
+		private var _menu:MenuView;
 		private var _game:Game;
 		private var _overlay:Bitmap;
 		private var _mask:Shape;
@@ -44,21 +46,31 @@ package flash.anon
 			_root.setChildIndex( _overlay, _root.numChildren-1 );
 		}
 		
+		public function set menu( value:MenuView ):void
+		{
+			_menu = value;
+			addChild( _menu );
+			setSizes();
+		}
+		
 		public function onStartGame( game:Game ):void
 		{
+			Mouse.hide();
+			_menu.visible = _menu.mouseEnabled = false;
 			_game = game;
-			_game.view.cacheAsBitmap = true;
 			addChild( _game.view );
 			setSizes();
 		}
 		
 		public function onStopGame():void
 		{
+			Mouse.show();
 			if( _game != null )
 			{
 				_root.removeChild( _game.view );
 				_game = null;
 			}
+			_menu.visible = _menu.mouseEnabled = true;
 		}
 		
 		private function setSizes( e:Event=null ):void
@@ -66,11 +78,16 @@ package flash.anon
 			var gameScale:Number = Math.max( _stage.stageWidth / GAME_WIDTH, _stage.stageHeight / GAME_HEIGHT );
 			if( _game != null )
 			{
-				_game.view.setSizes( _stage.stageWidth / gameScale, _stage.stageHeight / gameScale );
 				_game.view.scaleX = _game.view.scaleY = gameScale;
+				_game.view.setSizes( _stage.stageWidth / gameScale, _stage.stageHeight / gameScale );
+			}
+			if( _menu != null )
+			{
+				_menu.scaleX = _menu.scaleY = gameScale;
+				_menu.setSizes( _stage.stageWidth / gameScale, _stage.stageHeight / gameScale );
 			}
 			_overlay.scaleX = _overlay.scaleY = gameScale;
-			_mask.graphics.clear()
+			_mask.graphics.clear();
 			_mask.graphics.beginFill(0);
 			_mask.graphics.drawRect( 0, 0, _stage.stageWidth, _stage.stageHeight );
 			_mask.graphics.endFill();
