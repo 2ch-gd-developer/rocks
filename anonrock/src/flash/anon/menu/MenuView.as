@@ -14,6 +14,8 @@ package flash.anon.menu
 	{
 		public static const START_GAME:String = "MENU_START_GAME";
 		
+		private var _active:Boolean = false;
+		
 		private var _items:Vector.<MenuItem>;
 		private var _visibleItems:Vector.<MenuItem>;
 		private var _curHighlightedItemIndex:int;
@@ -90,9 +92,23 @@ package flash.anon.menu
 			addEventListener( Event.ADDED_TO_STAGE, onStage, false, 0, true );
 		}
 		
+		public function activate():void
+		{
+			_active = true;
+			if( stage )
+				stage.addEventListener( KeyboardEvent.KEY_DOWN, onKeyDown );
+		}
+		public function deactivate():void
+		{
+			_active = false;
+			if( stage )
+				stage.removeEventListener( KeyboardEvent.KEY_DOWN, onKeyDown );
+		}
+		
 		private function onStage( e:Event ):void
 		{
-			stage.addEventListener( KeyboardEvent.KEY_DOWN, onKeyDown );
+			if( _active )
+				stage.addEventListener( KeyboardEvent.KEY_DOWN, onKeyDown );
 		}
 		
 		private function onKeyDown( e:KeyboardEvent ):void
@@ -171,6 +187,8 @@ package flash.anon.menu
 		
 		private function itemHighlightedByMouse( e:Event ):void
 		{
+			if( !_active )
+				return;
 			if( e.target is MenuItem )
 			{
 				const item:MenuItem = e.target as MenuItem;

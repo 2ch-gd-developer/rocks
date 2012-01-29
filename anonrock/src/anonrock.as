@@ -13,6 +13,7 @@ package
 	public class anonrock extends Sprite
 	{
 		private var _scene:SceneView;
+		private var _menu:MenuView;
 		
 		public function anonrock()
 		{
@@ -29,22 +30,25 @@ package
 			stage.align = StageAlign.TOP_LEFT;
 			
 			_scene = new SceneView( this );
-			var menu:MenuView = new MenuView();
-			_scene.menu = menu;
-			menu.addEventListener( MenuView.START_GAME, startGame );
+			_menu = new MenuView();
+			_menu.activate();
+			_scene.menu = _menu;
+			_menu.addEventListener( MenuView.START_GAME, startGame );
 		}
 		
 		private function startGame( e:Event ):void
 		{
+			_menu.deactivate();
 			var game:Game = new Game( stage );
 			game.addEventListener( Event.COMPLETE, onGameComplete, false, 0, true );
-			game.start( ( e.target as MenuView ).planetParams );
+			game.start( _menu.planetParams );
 			_scene.onStartGame( game );
 		}
 		
 		private function onGameComplete( e:Event ):void
 		{
 			_scene.onStopGame();
+			_menu.activate();
 		}
 	}
 }
